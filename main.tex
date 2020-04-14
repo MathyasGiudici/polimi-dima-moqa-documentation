@@ -1,0 +1,128 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{enumitem}
+
+% hyperref for interactive PDF index
+\usepackage[bookmarks, colorlinks, breaklinks]{hyperref}
+\hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black}
+
+% Package required to use special symbols
+\usepackage{amsmath, amssymb}
+
+% Package for tables
+\usepackage{tabu}
+\usepackage{tabularx}
+\usepackage{ltablex}
+\usepackage{longtable}
+\usepackage{float} % To allow the use of H modifier in long tables
+\usepackage{multirow}
+
+% Package required to use figures
+\usepackage{graphicx}
+
+% Include the bibliography in the table of contents
+\usepackage[ backend=biber, style=ieee]{biblatex}
+\addbibresource{bibliography.bib}
+
+% Package used to insert figures at the specified position
+\usepackage{float} 
+
+% To have a new line after a \paragraph
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
+
+% References Packages
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+
+% Paragraph indent
+\setlength{\parindent}{0pt}
+
+% Special chars
+\usepackage{textcomp}
+
+\begin{document}
+
+% Title page
+\begin{titlepage}
+\centering
+	\begin{center}{
+		\begin{figure}[h]
+		\large
+		\centering
+		{\includegraphics[width=.70\linewidth]{img/logo_poli}}
+        \end{figure}
+    	}
+	\end{center}
+	\vspace{1 cm}
+	{\Large {\textbf{\LARGE MOQA} \\
+		Design and Implementation of a Mobile Application \\ Prof. Luciano Baresi \\ 2019/2020} \par}
+	\vspace{1.5cm}
+	{\LARGE \textbf{Design and Technology} \par}
+	{\Large\itshape Mathyas Giudici\par}
+	\vfill
+	% Bottom of the page
+	{\large Document version: 1.0\par}
+	{\large \today \par}
+\end{titlepage}
+
+{
+\pagestyle{empty}
+\begin{table}[h!]
+    \begin{tabu} to \textwidth { X[0.3,r,p] X[0.7,l,p] }
+        \textbf{Deliverable:} & Design and Technology Documentation\\
+        \textbf{Title:} & MOQA Design and Technology \\
+        \textbf{Authors:} & Mathyas Giudici\\
+        \textbf{Version:} & 1.0 \\
+        \textbf{Date:} & \today \\
+        \textbf{Download page:} & https://github.com/MathyasGiudici/polimi-dima-moqa \\
+        \textbf{Copyright:} & Copyright © 2020, Mathyas Giudici – All rights reserved \\
+    \end{tabu}
+\end{table}
+
+\clearpage
+}
+
+% Make the table of contents
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+% Introduction
+\chapter{Introduction}
+\input{./files/introduction.tex}
+\clearpage
+
+% Target groups and User needs
+\chapter{Target Groups and User Needs}
+%\input{./files/groupsNeeds.tex}
+\clearpage
+
+% Solution- UX Design
+\chapter{Solution - UX Design}
+%input{./files/ux.tex}
+%\input{./files/scenarios.tex}
+\clearpage
+
+% Solution - Implementation
+\chapter{Solution - Implementation}
+%\input{./files/solution.tex}
+\clearpage
+
+% Empirical Evaluation
+\chapter{Empirical Evaluation}
+%\input{./files/empirical.tex}
+\clearpage
+
+% Value Proposition
+\chapter{Value Proposition}
+%\input{./files/value.tex}
+\clearpage
+
+% Future Works
+\chapter{Future Works}
+%\input{./files/futureWorks.tex}
+\clearpage
+
+\end{document}
