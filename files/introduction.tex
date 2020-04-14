@@ -1,17 +1,46 @@
 \section{Purpose}
-
-In this section we want to introduce briefly our application.\\
+In this section I want to introduce briefly my application.\\
 
 The application is developed for the course of \textit{Design and Implementation of Mobile
 Applications} of professor Luciano Baresi at Politecnico di Milano.\\
 The goal of the course is to design and implement a mobile application on a platform of our choice.
-This documents illustrates the decisions we made in order to accomplish this goal.\\
+This documents illustrates the decisions I made in order to accomplish this goal.\\
 
 This Software Design Document is a document that provides documentation that will be
-used as a overall guidance to the architecture of the software project. In this document we
+used as a overall guidance to the architecture of the software project. In this document I will
 provide a documentation of the software design of the project, including use case models,
 class and sequence diagrams.\\
 
 The purpose of this document is to provide a full description of the design of \textit{MOQA}, a cross-platform application, providing insights into the structure and design of each component.
 
 \section{Scope}
+The application comes by a need of professor Fulvio Re Cecconi (ABC Departement of Polimi).\\
+He made an Arduino board that allows to measure some
+air quality parameters as temperature, relative humidity, light, ecc... .Measures are GPS located and saved to a microSD card.\\
+
+The aim is to increase the accuracy of the GPS location using GNSS Real Time Kinematics (RTK); the increased precision is obtained thanks to a GPS correction signal transmitted via internet. Thus Arduino must be equipped with a connection and use a mobile phone as a modem to measure more air quality parameters and automatically produce dynamic maps.\\
+
+During intial meetings we also decided to include a dynamic graph and compare Arduino data with the data registered by ARPA.
+
+\section{Risk Analysis}
+In the first phase of analysis I try to exploit the possible risks that can compromise the project developement.\\
+
+Risk Analysis was made in collaboration with the other two students that decided to develop the same project.\\
+
+We had to be very careful during the fist phases of implementation, expecially for the Arduino code, to manage all possible issues, leading to possible code rewriting and inevitable loss of time.
+
+\section{Time Constraints}
+We had no precise and punctuated deadlines, but to deliver the project among the different call dates for the course.\\
+
+Professor Re Cecconi asks for an application as soon as possible; however, without fixing a precise deadlines.\\
+
+I decided to plan the start of the developement at the beginning of the second semester. Developing, testing and creating documentation is planned to last less than 6 months. Even the server side part will build and maintained during the same time.\\
+
+I started development at February 2020 and complete it in June 2020.
+
+\section{Stakeholders}
+The main stakeholders of my project are Professor Re Cecconi, students and people that have to make measures with the Arduino board.\\
+
+I have to consider, as stakeholder, professor Luciano Baresi and that helds the \textit{Design and Implementation of Mobile Applications} course and Giovanni Quattrocchi, teaching assistant of the course.
+
+\section{Overview}
