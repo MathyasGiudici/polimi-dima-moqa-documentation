@@ -1,15 +1,10 @@
 \section{Concept}
 \textit{MOQA} is a cross-platform application that allows to retrieve air parameters registered by an Arduino board, send them to a remote server and visualize through a map and a chart.\\
 
-The application requires users to be authenticated. This strong requirement because to retrieve data and to send data to the remote server you need an authentication. \\ 
+The application requires users to be authenticated via his/her email and password (a new user could be registered filling up a form in the application). This strong requirement because to retrieve data and to send data to the remote server you need an authentication. \\ 
 Without these data the application could not provide any type of feature it has designed to; so it has no sense maintain a part without authentication.\\
 
-The main components of the project are:
-\begin{itemize}
-    \item A client-side part, that is \textit{MOQUA}, which queries the database or retrieves data from Arduino, visualizes data on a map and a chart, send new Arduino data to the server;
-    \item A server-side part, composed by a relational database that contains air quality data and users data; moreover it contains the application logic that delivers the RestfulAPI.
-\end{itemize}
-
+% Logo image
 \begin{figure}[h]
 \begin{center}
   \includegraphics{img/logo_moqa.png}
@@ -19,3 +14,119 @@ The main components of the project are:
   \label{img:logo_moqa}
 \end{center}
 \end{figure}
+\clearpage
+
+The main components of the project are:
+\begin{itemize}
+    \item A client-side part, that is \textit{MOQA}, which queries the database or retrieves data from Arduino, visualizes data on a map and a chart, send new Arduino data to the server;
+    \item A server-side part, composed by a relational database that contains air quality data and users data; moreover it contains the application logic that delivers the RestfulAPI for the authentication and the data management.
+\end{itemize}
+
+
+\section{Core features}
+in this section, a list of the core functionalities of the application is exploited. The features are divided by screen where they are present, allowing the reader to easily understand them and where they could be found in the application.
+
+\subsection{Authentication Screens}
+\begin{itemize}
+    \item Allows the user to authenticate using his/her email and password;
+    \item Allows the user to register his/her-self in the application.
+\end{itemize}
+    
+\subsection{Arduino Screen}
+\begin{itemize}
+    \item Allows the user to have a quick view of the last data retrieved by Arduino;
+    \item Allows the user to send the data that is retrieved by the Arduino board to the remote server;
+    \item Allows the user to fetch new data from Arduino (it is available an auto-fetch mode where the phone every second pulls new data);
+    \item Allows the user to decide if he/she wants to visualize the data get by the board or from the remote server.
+\end{itemize}
+    
+\subsection{Map Screen}
+\begin{itemize}
+    \item Allows the user to see the data on a Map. For each data a circle in its location is created, the radius of the circle depends on the value of the measure considered;
+    \item Allows the user to go to the related\textit{Filter Screen} to change the data visualized.
+\end{itemize}
+    
+\subsection{Chart Screen}
+\begin{itemize}
+    \item Allows the user to see the data on a Graph ordered by date and time;
+    \item Allows the user to see the data dispersion (tabulated as 1\textsuperscript{st}, 2\textsuperscript{nd} and 3\textsuperscript{rd} quartile);
+    \item Allows the user to go to the related\textit{Filter Screen} to change the data visualized.
+\end{itemize}
+    
+\subsection{Filter Screen}
+\begin{itemize}
+    \item Allows the user to select the measure (among the sampled one) he/she wants to visualize;
+    \item Allows the user to pick a start and end date to define a time range of data to visualize;
+    \item Allows the user to select if he7she wants to visualize the available ARPA data;
+    \item Allows the user to select the ARPA station from which data are taken.
+\end{itemize}
+    
+\subsection{Settings Screen}
+\begin{itemize}
+    \item Allows the user to manage his/her account changing personal information or the password;
+    \item Allows the user to logout from the application;
+    \item Allows the user to edit the IP address and port where the Arduino board is available;
+    \item Allows the user to edit the IP address and port where the remote server, with the application logic, is available;
+    \item Allows the user to manage the API links to the \textit{Regione Lombardia} OpenData service;
+    \item Allows the user to reset the parameters to the default defined by the application.
+\end{itemize}
+
+\section{Functional Requirements}
+In this section, I want to exploit all the functional requirements of my application.
+
+\subsection{General Requirements}
+\begin{itemize}
+    \item The application has to be used by many people from Polimi since it is an international university the app language is English;
+    \item The application has to start with a splash activity, while the application state is restored;
+    \item The application need user authentication, so it has also to provide a registration form;
+\end{itemize}
+
+\subsection{Authentication Requirements}
+\begin{itemize}
+    \item \textit{Login screen} should be accessible only to users not currently logged in;
+    \item Authentication screens should allow users to register or login using email and password;
+    \item Authentication screens should redirect the user to the \textit{Arduino screen} if the authentication is successful.
+\end{itemize}
+    
+\subsection{Arduino Requirements}
+\begin{itemize}
+    \item \textit{Arduino Screen} should display the data collected from the Arduino board;
+    \item \textit{Arduino Screen} should provide a way to send the data retrieved by the Arduino board to the remote server (if available) ;
+    %%
+    %% \TODO: Restart from HERE
+    %%
+\end{itemize}
+    
+\subsection{Map Requirements}
+\begin{itemize}
+    \item
+\end{itemize}
+    
+\subsection{Chart Requirements}
+\begin{itemize}
+    \item
+\end{itemize}
+    
+\subsection{Filter Requirements}
+\begin{itemize}
+    \item
+\end{itemize}
+    
+\subsection{Settings Requirements}
+\begin{itemize}
+    \item
+\end{itemize}
+
+\section{Non-Functional Requirements}
+These are the non-functional requirements that specify criteria that can be used to judge the operations of the application.
+
+\begin{itemize}
+    \item \textbf{Availability} the services must be always up and running. In case of failure it must be restored as soon as possible;
+    \item \textbf{Extensibility} the application was developed trying to keep a simple structure in order to allow further extensions easily;
+    \item \textbf{Maintainability} the code must be clear, readable and with explicative comments to allow future maintenance;
+    \item \textbf{Nice User Interface} nowadays is very important to have a cleaned and simple design. The application was developed following the Apple Human Interface Guidelines; 
+    \item \textbf{Portability} cross-platform implementation allows to use the application both in Android and iOS systems;
+    \item \textbf{Reliability} all the data must be trusted and they could not be modified by anyone. The remote database must be protected and the connection between client and server must be handled with an HTTPS protocol;
+    \item \textbf{Scalability} the system (considering client and server) should always be available to be used. System failures and server-side crashes must be avoided; 
+    \item \textbf{Usability} the application was developed to make the user interface as simple as possible keeping all the functionalities needed to provide the best user experience;
+\end{itemize}
