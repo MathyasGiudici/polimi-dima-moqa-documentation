@@ -1,0 +1,21 @@
+\section{Concept}
+\textit{MOQA} is a cross-platform application that allows to retrieve air parameters registered by an Arduino board, send them to a remote server and visualize through a map and a chart.\\
+
+The application requires users to be authenticated. This strong requirement because to retrieve data and to send data to the remote server you need an authentication. \\ 
+Without these data the application could not provide any type of feature it has designed to; so it has no sense maintain a part without authentication.\\
+
+The main components of the project are:
+\begin{itemize}
+    \item A client-side part, that is \textit{MOQUA}, which queries the database or retrieves data from Arduino, visualizes data on a map and a chart, send new Arduino data to the server;
+    \item A server-side part, composed by a relational database that contains air quality data and users data; moreover it contains the application logic that delivers the RestfulAPI.
+\end{itemize}
+
+\begin{figure}[h]
+\begin{center}
+  \includegraphics{img/logo_moqa.png}
+  \hspace{0.05\linewidth}
+  \centering
+  \caption{\textit{MOQA} logo}
+  \label{img:logo_moqa}
+\end{center}
+\end{figure}
