@@ -91,6 +91,12 @@ This module manages the requests for a \textit{User} interfacing itself with the
 As already explained before, the \textit{Web Server} is a simple service. It provides a simple web-page to redirect the user to the \textit{SwaggerUI} documentation.\\
 The \textit{Web Server} is hosted in the same space of the \textit{Application Server}; so the connections are done with the HTTPS protocol.\\
 
+\subsection{Mobile Application}
+The \textit{MOQA} mobile application communicates with the \textit{Application Server} through RestfulAPIs that are defined in order to describe the interactions between the two layers and that must be independent from the two implementations.\\
+The application manages the connection with the \textit{Arduino} board to get air and weather measures and send these data to the \textit{Application Server}. Moreover, it manages the connection with the \textit{Regione Lombardia OpenData} service to retrieve ARPA data.\\
+
+The detailed behaviour of the components in the mobile application is discussed in the Section \ref{sec:ci_mobile}.
+
 \begin{figure}[H]
 \begin{center}
   \includegraphics[width=\textwidth]{img/archi/components.png}
@@ -100,17 +106,38 @@ The \textit{Web Server} is hosted in the same space of the \textit{Application S
   \label{img:archi_components}
 \end{center}
 \end{figure}
-
-\subsection{Mobile Application}
-The \textit{MOQA} mobile application communicates with the \textit{Application Server} through RestfulAPIs that are defined in order to describe the interactions between the two layers and that must be independent from the two implementations.\\
-The application manages the connection with the \textit{Arduino} board to get air and weather measures and send these data to the \textit{Application Server}. Moreover, it manages the connection with the \textit{Regione Lombardia OpenData} service to retrieve ARPA data.\\
-
-The detailed behaviour of the components in the mobile application is discussed in the Section \ref{sec:ci_mobile}.
+\clearpage
 
 \section{Deployment View}
-Below is the deployment diagram of the system. (Figure \ref{})
+Below is the deployment diagram of the system (Figure \ref{img:archi_deployment}).
+
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=\textwidth,height=.83\textheight,keepaspectratio]{img/archi/deployment.png}
+  \hspace{0.05\linewidth}
+  \centering
+  \caption{\textit{Deployment Diagram} of the system}
+  \label{img:archi_deployment}
+\end{center}
+\end{figure}
 
 \section{Runtime View}\label{sec:runtime}
+The aim of this section is to specify the behaviour of the system. Some relevant cases are selected and exploit using \textit{Sequence Diagrams}.
+
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=\textwidth,keepaspectratio]{img/archi/sequences/signup.png}
+  \hspace{0.05\linewidth}
+  \centering
+  \caption{\textit{User Signup} sequence diagram: it describes the process through which a user can register itself in the system}
+  \label{img:archi_er}
+\end{center}
+\end{figure}
+
+
+
+
+
 
 \section{Component Interfaces}
 This section contains some detailed information about the interfaces between the components of the system.\\
