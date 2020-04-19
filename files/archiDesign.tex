@@ -129,15 +129,21 @@ The aim of this section is to specify the behaviour of the system. Some relevant
   \includegraphics[width=\textwidth,keepaspectratio]{img/archi/sequences/signup.png}
   \hspace{0.05\linewidth}
   \centering
-  \caption{\textit{User Signup} sequence diagram: it describes the process through which a user can register itself in the system}
-  \label{img:archi_er}
+  \caption{\textit{User Registration} sequence diagram: it describes the process through which a user can sign-up itself in the system}
+  \label{img:archi_sequence1}
 \end{center}
 \end{figure}
 
-
-
-
-
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=\textwidth,keepaspectratio]{img/archi/sequences/data.png}
+  \hspace{0.05\linewidth}
+  \centering
+  \caption{\textit{Post of Arduino data} sequence diagram: it describes the process through which a user can store in the \textit{Application Server} data detected with the \textit{Arduino} board}
+  \label{img:archi_sequence2}
+\end{center}
+\end{figure}
+\clearpage
 
 \section{Component Interfaces}
 This section contains some detailed information about the interfaces between the components of the system.\\
@@ -201,6 +207,59 @@ Following procedures are called by other components:
 \end{itemize}
 
 \subsection{Mobile Application}\label{sec:ci_mobile}
+The next diagram shows the flow of operation triggered by an actor that wants to perform a task. The actor could be the user or the system. The \textit{Use Case Diagram}, in Figure \ref{img:archi_usecase}, exploits the main operations that could be performed in the system. 
 
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=\textwidth]{img/archi/usecase.png}
+  \hspace{0.05\linewidth}
+  \centering
+  \caption{\textit{Use Case Diagram} of the system}
+  \label{img:archi_usecase}
+\end{center}
+\end{figure}
 
 \section{Architecture styles and patterns}
+Following there are the choices made regarding architectural styles and patterns.
+
+\subsection{Client and Server}
+A client-server architecture has been chosen for the system implementation: it allows the exchange of information between Internet-connected devices used by users and the centralized server that collects data and offers services (defined with a RestfulAPI).
+
+In particular:
+\begin{itemize}
+  \item The \textit{MOQA} mobile application installed on users' phone is connected to the \textit{Application Server} that receives and sends data.
+  \item The \textit{Application Server} is seen as a server by the \textit{MOQA} application installed on smartphones and as a client from the database that receives and processes its requests (queries).
+  \item The database is seen as a server by the application server that sends the requests and waits for the answers.
+\end{itemize}
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+  \begin{center}
+    \includegraphics[height=.3\textheight]{./img/archi/mvc.png}
+  \end{center}
+  \caption{Management of the client-server connection according to the MVC model}
+  \label{img:archi_mvc}
+\end{wrapfigure}
+
+
+\subsection{Thick Client}
+The \textit{MOQA} mobile application has to be considered a thick client: in the app, in addition to the graphical interface and the logic related to the acquisition of user data, there is also the logic that allows the processing of Arduino and ARPA data that must be shown in a map and on a chart.
+Thanks to this, the app has the function to collect data from the \textit{Arduino} board and to allow the user to see the data distribution and make a comparison between Arduino and ARPA data.
+
+\subsection{Model-View-Control}
+The MVC model identifies three main components in the management of a client-server application. They are the Model, the View and the Controller.
+The following diagram shows the management of these three levels according to the use of thick clients (Figure \ref{img:archi_mvc}).
+\linebreak[6]
+
+\section{Other Design Decisions}
+\subsection{User authentication}
+In order to guarantee the upload of \textit{Arduino} data to trusted users, the access to the system takes place by entering a username and password.
+The username used for the access coincides with the email address used during registration.
+
+\subsection{Password storing}
+The passwords given to the users are saved in the database after being encrypted using a SHA512 algorithm.\\
+This way, the passwords that have to be used to access to \textit{MOQA} and the \textit{Application Server} services are not stored in plain-text in the user's database, but they are the result of a transformation from which, even with very powerful computers, it is very difficult to trace the original ones.\\
+This way if an intruder succeeds in picking up the string containing the password, he won't be able to trace the password used to access the service.
+
+\subsection{Security in the transfer of information}
+The transfer of data between the clients and the server is done using the most modern data encryption protocol, HTTPS.
+
