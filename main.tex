@@ -5,6 +5,8 @@
 \usepackage{lmodern}
 \usepackage{enumitem}
 
+% References Packages
+\usepackage{xr-hyper}
 % hyperref for interactive PDF index
 \usepackage[bookmarks, colorlinks, breaklinks]{hyperref}
 \hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black}
@@ -23,19 +25,11 @@
 % Package required to use figures
 \usepackage{graphicx}
 
-% Include the bibliography in the table of contents
-\usepackage[ backend=biber, style=ieee]{biblatex}
-\addbibresource{bibliography.bib}
-
 % Package used to insert figures at the specified position
 \usepackage{float} 
 
 % To have a new line after a \paragraph
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
-
-% References Packages
-\usepackage{xr-hyper}
-\usepackage{hyperref}
 
 % Paragraph indent
 \setlength{\parindent}{0pt}
@@ -250,14 +244,9 @@ showstringspaces=false,      % Leerzeichen in Strings anzeigen ?
 \input{./files/overview.tex}
 \clearpage
 
-% Data Design
-\chapter{Data Design}
-%\input{./files/introduction.tex}
-\clearpage
-
 % Architectures and component level design
-\chapter{Architectures and Component Level Design}
-%\input{./files/introduction.tex}
+\chapter{Architectural Design}
+\input{./files/archiDesign.tex}
 \clearpage
 
 % UX Design

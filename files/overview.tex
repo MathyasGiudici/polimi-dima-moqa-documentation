@@ -1,5 +1,5 @@
 \section{Concept}
-\textit{MOQA} is a cross-platform application that allows to retrieve air parameters registered by an Arduino board, send them to a remote server and visualize through a map and a chart.\\
+\textit{MOQA} is a cross-platform application that allows to retrieve air parameters registered by an \textit{Arduino} board, send them to a remote server and visualize through a map and a chart.\\
 
 The application requires users to be authenticated via his/her email and password (a new user could be registered filling up a form in the application). This strong requirement because to retrieve data and to send data to the remote server you need an authentication. \\ 
 Without these data the application could not provide any type of feature it has designed to; so it has no sense maintain a part without authentication.\\
@@ -18,7 +18,7 @@ Without these data the application could not provide any type of feature it has 
 
 The main components of the project are:
 \begin{itemize}
-    \item A client-side part, that is \textit{MOQA}, which queries the database or retrieves data from Arduino, visualizes data on a map and a chart, send new Arduino data to the server;
+    \item A client-side part, that is \textit{MOQA}, which queries the database or retrieves data from \textit{Arduino}, visualizes data on a map and a chart, send new \textit{Arduino} data to the server;
     \item A server-side part, composed by a relational database that contains air quality data and users data; moreover it contains the application logic that delivers the RestfulAPI for the authentication and the data management.
 \end{itemize}
 
@@ -34,9 +34,9 @@ in this section, a list of the core functionalities of the application is exploi
     
 \subsection{Arduino Screen}
 \begin{itemize}
-    \item Allows the user to have a quick view of the last data retrieved by Arduino;
-    \item Allows the user to send the data that is retrieved by the Arduino board to the remote server;
-    \item Allows the user to fetch new data from Arduino (it is available an auto-fetch mode where the phone every second pulls new data);
+    \item Allows the user to have a quick view of the last data retrieved by \textit{Arduino};
+    \item Allows the user to send the data that is retrieved by the \textit{Arduino} board to the remote server;
+    \item Allows the user to fetch new data from \textit{Arduino} (it is available an auto-fetch mode where the phone every second pulls new data);
     \item Allows the user to decide if he/she wants to visualize the data get by the board or from the remote server.
 \end{itemize}
     
@@ -65,7 +65,7 @@ in this section, a list of the core functionalities of the application is exploi
 \begin{itemize}
     \item Allows the user to manage his/her account changing personal information or the password;
     \item Allows the user to logout from the application;
-    \item Allows the user to edit the IP address and port where the Arduino board is available;
+    \item Allows the user to edit the IP address and port where the \textit{Arduino} board is available;
     \item Allows the user to edit the IP address and port where the remote server, with the application logic, is available;
     \item Allows the user to manage the API links to the \textit{Regione Lombardia} OpenData service;
     \item Allows the user to reset the parameters to the default defined by the application.
@@ -76,9 +76,12 @@ In this section, I want to exploit all the functional requirements of my applica
 
 \subsection{General Requirements}
 \begin{itemize}
-    \item The application has to be used by many people from Polimi since it is an international university the app language is English;
-    \item The application has to start with a splash activity, while the application state is restored;
-    \item The application need user authentication, so it has also to provide a registration form;
+    \item The mobile application has to be used by many people from Polimi since it is an international university the app language is English;
+    \item The mobile application has to start with a splash activity, while the application state is restored;
+    \item The mobile application need user authentication, so it has also to provide a registration form;
+    \item The mobile has to be designed to establish a connection with an \textit{Arduino} board to retrieve weather and air data;
+    \item The \textit{Arduino} board must be developed to create a simple HTTP server to provide data coming from its sensors;
+    \item The \textit{Arduino} board must be developed to create an HTTP connection to retrieve the RTK GPS correction signal from the \textit{SPIN3 GNSS NTRIPCaster};
 \end{itemize}
 
 \subsection{Authentication Requirements}
@@ -90,16 +93,16 @@ In this section, I want to exploit all the functional requirements of my applica
     
 \subsection{Arduino Requirements}
 \begin{itemize}
-    \item \textit{Arduino Screen} should display the data collected from the Arduino board;
+    \item \textit{Arduino Screen} should display the data collected from the \textit{Arduino} board;
     \item \textit{Arduino Screen} should provide a way to fetch manually the data from the board or provide a tool to an auto-fetching mode;
-    \item \textit{Arduino Screen} should provide a way to send the data retrieved by the Arduino board to the remote server (if a connection is available) ;
+    \item \textit{Arduino Screen} should provide a way to send the data retrieved by the \textit{Arduino} board to the remote server (if a connection is available) ;
     \item \textit{Arduino Screen} should allow the user to decide which type of data (live or remote stored) he/she wants to visualize in the \textit{Map Screen} and \textit{Chart Screen}.
 \end{itemize}
     
 \subsection{Map Requirements}
 \begin{itemize}
-    \item \textit{Map Screen} should display the data from ARPA dataset and Arduino board (live data or remote one);
-    \item \textit{Map Screen} should clear distinguish ARPA data (red circles) from Arduino data (blue circles);
+    \item \textit{Map Screen} should display the data from ARPA dataset and \textit{Arduino} board (live data or remote one);
+    \item \textit{Map Screen} should clear distinguish ARPA data (red circles) from \textit{Arduino} data (blue circles);
     \item \textit{Map Screen} should provide a way to allow the user to filter the data he/she wants to visualize (it has to allow the user to go to the relative \textit{Filter Screen});
     \item \textit{Map Screen} should display to the user if the page is in a loading mode to refresh the data;
     \item \textit{Map Screen} should provide a tool to manually refresh the page.
@@ -107,9 +110,9 @@ In this section, I want to exploit all the functional requirements of my applica
     
 \subsection{Chart Requirements}
 \begin{itemize}
-    \item \textit{Chart Screen} should display the data from ARPA dataset and Arduino board (live data or remote one);
+    \item \textit{Chart Screen} should display the data from ARPA dataset and \textit{Arduino} board (live data or remote one);
     \item \textit{Chart Screen} should display the data in a linear graph, ordered by timestamp;
-    \item \textit{Chart Screen} should clear distinguish ARPA data (red line in the graph) from Arduino data (blue line in the graph);
+    \item \textit{Chart Screen} should clear distinguish ARPA data (red line in the graph) from \textit{Arduino} data (blue line in the graph);
     \item \textit{Chart Screen} should display the data dispersion (tabulated as 1\textsuperscript{st}, 2\textsuperscript{nd} and 3\textsuperscript{rd} quartile);
     \item \textit{Chart Screen} should provide a way to allow the user to filter the data he/she wants to visualize (it has to allow the user to go to the relative \textit{Filter Screen});
     \item \textit{Chart Screen} should display to the user if the page is in a loading mode to refresh the data;
@@ -134,7 +137,7 @@ In this section, I want to exploit all the functional requirements of my applica
             \item It should allow the user to delete him/her account;
             \item It should allow the user to log-out.
         \end{itemize}
-    \item \textit{Settings Screen} should display and allow to change the IP address and port of the Arduino board;
+    \item \textit{Settings Screen} should display and allow to change the IP address and port of the \textit{Arduino} board;
     \item \textit{Settings Screen} should display and allow to change the IP address and port of the server;
     \item \textit{Settings Screen} should display and allow to change the ARPA data links:
         \begin{itemize}

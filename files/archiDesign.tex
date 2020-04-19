@@ -1,0 +1,112 @@
+\section{Overview}
+The main high-level components of the system are structured in four layers, as shown in Figure \ref{img:archi_layers} below.
+
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=\textwidth]{img/archi/layers.png}
+  \hspace{0.05\linewidth}
+  \centering
+  \caption{\textit{Layered Structure} of the system}
+  \label{img:archi_layers}
+\end{center}
+\end{figure}
+\clearpage
+
+The considered high-level components are:
+\begin{itemize}
+  \setlength{\itemindent}{-.4in}
+  
+  \item[] \textbf{Mobile Application:} The \textit{Presentation Layer} dedicated to mobile devices. It communicates with the Application Server to retrieve and send data measured by the \textit{Arduino} board. It contains a wide part of the \textit{Logic Layer} to render data in different ways.\\
+  The communication with the \textit{Arduino} board is handled with the phone hotspot service; moreover, \textit{Arduino} board could retrieve the RTK GPS correction with a TCP connection with the NTRIPCaster.
+  
+  \item[] \textbf{Web Browsers:} The \textit{Presentation Layer} dedicated to web browsers; it communicates directly with the Web Server.
+  
+  \item[] \textbf{Web Server:} it communicates with the Application Server and with the Web Browsers. This is the layer that provides web-pages for the Web Browser; currently, it provides only the SwaggerUI documentation of the RestfulAPI.
+  
+  \item[] \textbf{Application Server:} This is the layer in which is contained a part of the \textit{Logic Layer} to manage and store users information and collected data with the board; it communicates directly with the Mobile Application, the Web Server and the Database.
+  
+  \item[] \textbf{Database:}  The \textit{Data Layer} of the system; it includes all structures and entities responsible for data storage and management. It communicates with the Application Server.
+\end{itemize}
+
+In the Figure \ref{img:archi_layers}, \textit{Web Server} and \textit{Application Server} are separated because they represent different function of the application.\\
+As mentioned before, it is not implemented a \textit{Web Application} on the \textit{Web Server}, so, in the current setting they are merged.\\ If in future a \textit{Web Application} will be implemented it could be useful to separate the two services in order to allow greater scalability.
+\clearpage
+
+\section{Component View}
+In this section the system will be described in term of its components:  their functionalities will be discussed and detailed.\\
+Moreover, interfaces among components and among external systems will be shown.
+
+\subsection{Database}
+The application database is managed using a Relational DBMS. \\
+It allows the reading of data, ensuring to the users the possibility to log in, access the application of interest and check the stored data.
+It is also used for data manipulation (insertion, modification and deletion).
+The use of a Relational DBMS guarantees the fundamental properties for a database of this type:
+\begin{itemize}
+  \item \textit{Atomicity}: no partial executions of operations;
+  \item \textit{Consistency}: the database is always in a consistent state;
+  \item \textit{Isolation}: each transaction is executed in an isolated and independent way;
+  \item \textit{Durability / Persistence}: changes made are not lost.
+\end{itemize}
+
+The database offers to the Application Server an interface that it can use to interact with it.
+Particular attention must be paid to the encryption of passwords used to the user access to the system.
+Below is the designed E-R diagram (Figure \ref{img:archi_er}).
+
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=\textwidth]{img/archi/ER.png}
+  \hspace{0.05\linewidth}
+  \centering
+  \caption{\textit{Entity-Relationship} Diagram of the Database}
+  \label{img:archi_er}
+\end{center}
+\end{figure}
+
+\subsection{Application Server}
+The main feature of the \textit{Application Server} is to define rules and work-flows of all the functionalities defined by the RestfulAPI.\\
+The \textit{Application Server} must have interfaces to communicate with the \textit{Mobile Application} and also with the DBMS; the communication must be done through HTTPS protocol.\\
+In the brief introduction below, logic modules and their descriptions are presented, while all the connections among them can be seen in the \textit{Global Component View} in Figure \ref{img:archi_components}.
+
+\paragraph{Authentication Service}
+This module handles the authentication and authorization process. It generates authorization tokens and checks their validity.
+
+\paragraph{Arduino Data Controller}
+This module receives the requests at the \textit{Arduino Data} endpoint, it checks the authorization using the interface with the \textit{Authentication Service} and pass them to the \textit{Arduino Data Service}.
+
+\paragraph{Arduino Data Service}
+This module manages the requests for \textit{Arduino Data} interfacing itself with the \textit{Data Service}.
+
+\paragraph{Data Service}
+This module is the unique interface of the \textit{Application Server} to the database's DBMS.
+
+\paragraph{User Controller}
+This module receives the requests at the \textit{User} endpoint, it checks the authorization using the interface with the \textit{Authentication Service} and pass them to the \textit{User Service}.
+
+\paragraph{User Service}
+This module manages the requests for a \textit{User} interfacing itself with the \textit{Data Service}.
+
+\subsection{Web Server}
+As already explained before, the \textit{Web Server} is a simple service. It provides a simple web-page to redirect the user to the \textit{SwaggerUI} documentation.\\
+The \textit{Web Server} is hosted in the same space of the \textit{Application Server}; so the connections are done with the HTTPS protocol.\\
+
+\subsection{Mobile Application}
+The \textit{MOQA} mobile application communicates with the \textit{Application Server} through RestfulAPIs that are defined in order to describe the interactions between the two layers and that must be independent from the two implementations.\\
+The application manages the connection with the \textit{Arduino} board to get air and weather measures and send these data to the \textit{Application Server}. Moreover, it manages the connection with the \textit{Regione Lombardia OpenData} service to retrieve ARPA data.\\
+
+The detailed behaviour of the components in the mobile application is discussed in the Section \ref{sec:cv_mobile}.
+
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=\textwidth]{img/archi/components.png}
+  \hspace{0.05\linewidth}
+  \centering
+  \caption{\textit{Global Component View}}
+  \label{img:archi_components}
+\end{center}
+\end{figure}
+
+\section{Component View}
+
+\subsection{Application Server}
+
+\subsection{Mobile Application}\label{sec:cv_mobile}
