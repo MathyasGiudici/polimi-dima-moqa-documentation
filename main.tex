@@ -29,7 +29,7 @@
 \usepackage{float} 
 
 % To have a new line after a \paragraph
-\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
+\newcommand{\customParagraph}[1]{\paragraph{#1}\mbox{}\\}
 
 % Paragraph indent
 \setlength{\parindent}{0pt}
@@ -188,6 +188,10 @@ showstringspaces=false,      % Leerzeichen in Strings anzeigen ?
 %
 \makeatother
 
+%% ----------------------------------------------------
+%% --------------------- DOCUMENT ---------------------
+%% ----------------------------------------------------
+
 \begin{document}
 
 % Title page
@@ -250,7 +254,7 @@ showstringspaces=false,      % Leerzeichen in Strings anzeigen ?
 \clearpage
 
 % UX Design
-\chapter{UX Design}
+\chapter{User Interface Design}
 %input{./files/ux.tex}
 \clearpage
 
@@ -265,7 +269,7 @@ showstringspaces=false,      % Leerzeichen in Strings anzeigen ?
 \clearpage
 
 % Cost Estimation
-\chapter{Cost Estimation}
+\chapter{Effort and Cost Estimation}
 %input{./files/ux.tex}
 \clearpage
 
