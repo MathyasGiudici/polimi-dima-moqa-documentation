@@ -1,0 +1,115 @@
+This section describes the result of the main test done on \textit{MOQA} mobile application.
+
+% Give padding at the table
+\bgroup
+\def\arraystretch{1.2}
+
+\begin{table}[H]
+\begin{tabular}{| p{0.3\textwidth} | p{0.7\textwidth} |}
+  \hline
+  \textbf{Test Case} & \textit{Sign Up} \\ \hline
+  \textbf{Goal} & Register a new user. \\ \hline
+  \textbf{Input} & In the Login screen the user clicks on the Sign Up button, fills-up the form and clicks on the Sign Up button. \\ \hline
+  \textbf{Expected outcome} & The new user is registered in the application. \\ \hline
+  \textbf{Actual outcome} & CORRECT: After the click on the Sign Up button in the Login screen the application shows the form to register a new user; after the click on the Sign Up button the application goes back in the Login screen that contains the created credentials. If the user is already registered or there are problems in the connection an alert is thrown.\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{0.3\textwidth} | p{0.7\textwidth} |}
+  \hline
+  \textbf{Test Case} & \textit{Login} \\ \hline
+  \textbf{Goal} & Login in the application. \\ \hline
+  \textbf{Input} & In the Login screen the user inserts email and password, finally, clicks on the Login button. \\ \hline
+  \textbf{Expected outcome} & The user logs-in the application. \\ \hline
+  \textbf{Actual outcome} & CORRECT: After filling up the fields with email and password; after the click on the Login button the application goes to the Arduino screen. If the credentials are wrong or there are problems in the connection an alert is thrown.\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{0.3\textwidth} | p{0.7\textwidth} |}
+  \hline
+  \textbf{Test Case} & \textit{Data Sampling} \\ \hline
+  \textbf{Goal} & Sample and send to the server Arduino data. \\ \hline
+  \textbf{Input} & The user logs-in in the application, clicks on Start Recording, then clicks on Fetch data or Auto-fetch data. \\ \hline
+  \textbf{Expected outcome} & Data are sampled and sent to the server. \\ \hline
+  \textbf{Actual outcome} & CORRECT: After the login in the application, a click on Start recording and Auto-fetch data: the application starts to automatically fetch data and send the to the server. If there are are problems in the connection with the server or with the board an alert is thrown. \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{0.3\textwidth} | p{0.7\textwidth} |}
+  \hline
+  \textbf{Test Case} & \textit{Map Tracking} \\ \hline
+  \textbf{Goal} & Visualize live data on the map. \\ \hline
+  \textbf{Input} & The user logs-in in the application, enables on Auto-fetch data, enables Visualization of live data, goes to Map screen. \\ \hline
+  \textbf{Expected outcome} & At every new data from the board the Map screen refreshes. \\ \hline
+  \textbf{Actual outcome} & CORRECT: After the login in the application, enabling the Auto-fetch data and Visualize live data toggles: the application starts to automatically fetch data; going on the Map screen, every time a new data arrives the map is updated with a new circle. \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{0.3\textwidth} | p{0.7\textwidth} |}
+  \hline
+  \textbf{Test Case} & \textit{Chart Tracking} \\ \hline
+  \textbf{Goal} & Visualize live data on the chart. \\ \hline
+  \textbf{Input} & The user logs-in in the application, enables on Auto-fetch data, enables Visualization of live data, goes to Chart screen. \\ \hline
+  \textbf{Expected outcome} & At every new data from the board the Chart screen refreshes. \\ \hline
+  \textbf{Actual outcome} & CORRECT: After the login in the application, enabling the Auto-fetch data and Visualize live data toggles: the application starts to automatically fetch data; going on the Map screen, every time a new data arrives the chart screen is updated. \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{0.3\textwidth} | p{0.7\textwidth} |}
+  \hline
+  \textbf{Test Case} & \textit{Change User Information} \\ \hline
+  \textbf{Goal} & Change some user information. \\ \hline
+  \textbf{Input} & The user logs-in in the application, goes in the Settings screens, clicks on its name. In the new screen, the user changes the parameter it wants and then clicks on Make changes button to confirm. \\ \hline
+  \textbf{Expected outcome} & New data are correctly updated in the database and a message is notified to the user. \\ \hline
+  \textbf{Actual outcome} & CORRECT: After the login in the application and reached the User Settings screen the user fills some fields with new information. Clicked on Make changes, the application notify the user that data are updated.\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{0.3\textwidth} | p{0.7\textwidth} |}
+  \hline
+  \textbf{Test Case} & \textit{Change User Password} \\ \hline
+  \textbf{Goal} & Change the account password. \\ \hline
+  \textbf{Input} & The user logs-in in the application, goes in the Settings screens, clicks on its name. In the new screen, the user inserts twice a new password and then clicks on Make changes button to confirm. \\ \hline
+  \textbf{Expected outcome} & New data are correctly updated in the database and a message is notified to the user.\\ \hline
+  \textbf{Actual outcome} & CORRECT: After the login in the application and reached the User Settings screen the user inserts the new password and the confirmation password (same). Clicked on Make changes, the application notify the user that data are updated.\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{0.3\textwidth} | p{0.7\textwidth} |}
+  \hline
+  \textbf{Test Case} & \textit{Logout} \\ \hline
+  \textbf{Goal} & Logout from the application. \\ \hline
+  \textbf{Input} & The user logs-in in the application, goes in the Settings screens, clicks on its name. In the new screen, the user clicks on logout button. \\ \hline
+  \textbf{Expected outcome} & The application goes back to the login screen.\\ \hline
+  \textbf{Actual outcome} & CORRECT: After the login in the application, reached the User Settings screen and clicked on the logout button the application shows the Login screen.\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{0.3\textwidth} | p{0.7\textwidth} |}
+  \hline
+  \textbf{Test Case} & \textit{Change Arduino Connection} \\ \hline
+  \textbf{Goal} & Change Arduino Connection. \\ \hline
+  \textbf{Input} & The user logs-in in the application, goes in the Settings screens, clicks on Arduino Connection. In the new screen, the user modifies IP Addres and port. \\ \hline
+  \textbf{Expected outcome} & The application changes the parameters and update the status.\\ \hline
+  \textbf{Actual outcome} & CORRECT: After the login in the application, reached the Arduino Connection screen and modified the IP Address and port the user clicks on Make changes. The connection status color from red becomes green.\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{| p{0.3\textwidth} | p{0.7\textwidth} |}
+  \hline
+  \textbf{Test Case} & \textit{Pick Up a new Station} \\ \hline
+  \textbf{Goal} & Add the Abbiategrasso stations to the stations to considered for the weather data. \\ \hline
+  \textbf{Input} & The user logs-in in the application, goes in the Settings screens, clicks on ARPA Weather Data Connection. In the new screen, the user clicks on Pick Stations button and then selects the Abbiategrasso stations. \\ \hline
+  \textbf{Expected outcome} & The application puts a V near the new picked stations.\\ \hline
+  \textbf{Actual outcome} & CORRECT: After the login in the application, reached the ARPA Weather Data Connection screen and clicked the Pick Stations button the users picks the Abbiategrasso stations. The picked stations have a V; moreover going in the filter station picker the new stations are shown.\\ \hline
+\end{tabular}
+\end{table}
