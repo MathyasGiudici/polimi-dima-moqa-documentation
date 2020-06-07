@@ -65,7 +65,7 @@ Below is the designed E-R diagram (Figure \ref{img:archi_er}).
 
 \subsection{Application Server}
 The main feature of the \textit{Application Server} is to define rules and work-flows of all the functionalities defined by the RestfulAPI.\\
-The \textit{Application Server} must have interfaces to communicate with the \textit{Mobile Application} and also with the DBMS; the communication must be done through HTTPS protocol.\\
+The \textit{Application Server} must have interfaces to communicate with the \textit{Mobile Application} and also with the DBMS; the communication must be done using the HTTPS protocol.\\
 In the brief introduction below, logic modules and their descriptions are presented, while all the connections among them can be seen in the \textit{Global Component View} in Figure \ref{img:archi_components}.
 
 \customParagraph{Authentication Service}
@@ -156,7 +156,7 @@ Huge part of these actions could be seen played in the \textit{Sequence Diagrams
 Following procedures are called by other components:
 \begin{itemize}
     \item \textbf{generateJWT}\quad This method allows to generate a token for the authentication. The token must be added in the requests as \textit{Header} attribute.
-    \item \textbf{decodeJWT}\quad This method allows to get and decode the token, if present, in a request. It returns the object with the information of the.
+    \item \textbf{decodeJWT}\quad This method allows to get and decode the token, if present, in a request. It returns the object with the information of the authenticated user.
 \end{itemize}
 
 \customParagraph{Arduino Data Controller}
@@ -171,14 +171,14 @@ Following procedures are called by other components:
 Following procedures are called by other components:
 \begin{itemize}
     \item \textbf{getData}\quad This method is called by the \textit{Arduino Data Controller}. It retrieves the data preparing the query to submit to the \textit{Data Service}.
-    \item \textbf{getDataByDate}\quad This method is called by the \textit{Arduino Data Controller}. It retrieves the data preparing the query to submit to the \textit{Data Service}
-    \item \textbf{postData}\quad This method is called by the \textit{Arduino Data Controller}. It retrieves the data preparing the query to submit to the \textit{Data Service}
+    \item \textbf{getDataByDate}\quad This method is called by the \textit{Arduino Data Controller}. It retrieves the data preparing the query to submit to the \textit{Data Service}.
+    \item \textbf{postData}\quad This method is called by the \textit{Arduino Data Controller}. It retrieves the data preparing the query to submit to the \textit{Data Service}.
 \end{itemize}
 
 \customParagraph{Data Service}
 Following procedure is called by other components:
 \begin{itemize}
-    \item \textbf{databaseInit}\quad This method is called during the initialization of the \textit{Application Server} to create the tables in the database and initialize them with the initials data.
+    \item \textbf{databaseInit}\quad This method is called during the initialization of the \textit{Application Server} to create the tables in the database. In the actual version, due to the COVID-19 national emergency, it contains also the initialization of the tables with simulated data.
 \end{itemize}
 
 Moreover, it provides an object that has own methods to query the database through the DBMS service.
@@ -186,12 +186,12 @@ Moreover, it provides an object that has own methods to query the database throu
 \customParagraph{User Controller}
 Following procedures are called by other components:
 \begin{itemize}
-    \item \textbf{deleteUserMe}\quad This method is called when a request is received at the corresponding endpoint. It calls the \textit{Authentication Service} to check the session, if the session is valid it retrieves, from the session, the user email and calls the corresponding method in the \textit{Arduino Data Service}.
-    \item \textbf{getUserMe}\quad This method is called when a request is received at the corresponding endpoint. It calls the \textit{Authentication Service} to check the session, if the session is valid it retrieves, from the session, the user email and calls the corresponding method in the \textit{Arduino Data Service}.
-    \item \textbf{postUserLogin}\quad This method is called when a request is received at the corresponding endpoint. It retrieves the parameters in the request and calls the corresponding method in the \textit{Arduino Data Service}.
+    \item \textbf{deleteUserMe}\quad This method is called when a request is received at the corresponding endpoint. It calls the \textit{Authentication Service} to check the session, if the session is valid it retrieves, from the session, the user email and calls the corresponding method in the \textit{User Service}.
+    \item \textbf{getUserMe}\quad This method is called when a request is received at the corresponding endpoint. It calls the \textit{Authentication Service} to check the session, if the session is valid it retrieves, from the session, the user email and calls the corresponding method in the \textit{User Service}.
+    \item \textbf{postUserLogin}\quad This method is called when a request is received at the corresponding endpoint. It retrieves the parameters in the request and calls the corresponding method in the \textit{User Service}.
     \item \textbf{postUserLogout}\quad This method is called when a request is received at the corresponding endpoint. It calls the \textit{Authentication Service} to check the session, if the session is valid it logout the user.
-    \item \textbf{postUserRegister}\quad This method is called when a request is received at the corresponding endpoint. It retrieves the parameters in the request and calls the corresponding method in the \textit{Arduino Data Service}.
-    \item \textbf{putUserMe}\quad This method is called when a request is received at the corresponding endpoint. It calls the \textit{Authentication Service} to check the session. If the session is valid, it retrieves the parameters in the request, checks the consistency* and calls the corresponding method in the \textit{Arduino Data Service}.
+    \item \textbf{postUserRegister}\quad This method is called when a request is received at the corresponding endpoint. It retrieves the parameters in the request and calls the corresponding method in the \textit{User Service}.
+    \item \textbf{putUserMe}\quad This method is called when a request is received at the corresponding endpoint. It calls the \textit{Authentication Service} to check the session. If the session is valid, it retrieves the parameters in the request, checks the consistency* and calls the corresponding method in the \textit{User Service}.
 \end{itemize}
 
 *: the consistency is computed checking if the session email is the same in the body in the PUT request.
@@ -227,9 +227,9 @@ A client-server architecture has been chosen for the system implementation: it a
 
 In particular:
 \begin{itemize}
-  \item The \textit{MOQA} mobile application installed on users' phone is connected to the \textit{Application Server} that receives and sends data.
-  \item The \textit{Application Server} is seen as a server by the \textit{MOQA} application installed on smartphones and as a client from the database that receives and processes its requests (queries).
-  \item The database is seen as a server by the application server that sends the requests and waits for the answers.
+  \item The \textit{MOQA} mobile application installed on users' phone is connected to the \textit{Application Server} that receives and sends data;
+  \item The \textit{Application Server} is seen as a server by the \textit{MOQA} application installed on smartphones and as a client from the database that receives and processes its requests (queries);
+  \item The database is seen as a server by the \textit{Application Server} that sends the requests and waits for the answers.
 \end{itemize}
 
 \begin{wrapfigure}{r}{0.4\textwidth}
@@ -242,7 +242,7 @@ In particular:
 
 
 \subsection{Thick Client}
-The \textit{MOQA} mobile application has to be considered a thick client: in the app, in addition to the graphical interface and the logic related to the acquisition of user data, there is also the logic that allows the processing of Arduino and ARPA data that must be shown in a map and on a chart.
+The \textit{MOQA} mobile application has to be considered a thick client: in the app, in addition to the graphical interface and the logic related to the acquisition of user data, there is also the logic that allows the processing of Arduino and ARPA data that must be shown in a map and on a chart.\\
 Thanks to this, the app has the function to collect data from the \textit{Arduino} board and to allow the user to see the data distribution and make a comparison between Arduino and ARPA data.
 
 \subsection{Model-View-Control}

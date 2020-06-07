@@ -1,7 +1,8 @@
 \section{Concept}
-\textit{MOQA} is a cross-platform application that allows to retrieve air parameters registered by an \textit{Arduino} board, send them to a remote server and visualize through a map and a chart.\\
+\textit{MOQA} is a cross-platform application that allows to retrieve weather and air quality parameters registered by an \textit{Arduino} board, send them to a remote server and visualize through a map and a chart.\\
 
-The application requires users to be authenticated via his/her email and password (a new user could be registered filling up a form in the application). This strong requirement because to retrieve data and to send data to the remote server you need an authentication. \\ 
+The application requires users to be authenticated via his/her email and password (a new user could be registered filling up a form in the application).\\
+This strong requirement is set because to retrieve and send data to the remote server you need to be authenticated on it. \\ 
 Without these data the application could not provide any type of feature it has designed to; so it has no sense maintain a part without authentication.\\
 
 % Logo image
@@ -18,13 +19,13 @@ Without these data the application could not provide any type of feature it has 
 
 The main components of the project are:
 \begin{itemize}
-    \item A client-side part, that is \textit{MOQA}, which queries the database or retrieves data from \textit{Arduino}, visualizes data on a map and a chart, send new \textit{Arduino} data to the server;
+    \item A client-side part, that is \textit{MOQA}, which queries the database or retrieves data from \textit{Arduino} board, visualizes data on a map and a chart, send new \textit{Arduino} data to the server;
     \item A server-side part, composed by a relational database that contains air quality data and users data; moreover it contains the application logic that delivers the RestfulAPI for the authentication and the data management.
 \end{itemize}
 
 
 \section{Core features}
-in this section, a list of the core functionalities of the application is exploited. The features are divided by screen where they are present, allowing the reader to easily understand them and where they could be found in the application.
+In this section, a list of the core functionalities of the application is exploited. The features are divided by screen where they are present, allowing the reader to easily understand them and where they could be found in the application.
 
 \subsection{Authentication Screens}
 \begin{itemize}
@@ -34,16 +35,16 @@ in this section, a list of the core functionalities of the application is exploi
     
 \subsection{Arduino Screen}
 \begin{itemize}
-    \item Allows the user to have a quick view of the last data retrieved by \textit{Arduino};
+    \item Allows the user to have a quick view of the last data retrieved by the \textit{Arduino} board;
     \item Allows the user to send the data that is retrieved by the \textit{Arduino} board to the remote server;
-    \item Allows the user to fetch new data from \textit{Arduino} (it is available an auto-fetch mode where the phone every second pulls new data);
+    \item Allows the user to fetch new data from the \textit{Arduino} board (it is also available an auto-fetch mode where the phone every second pulls new data);
     \item Allows the user to decide if he/she wants to visualize the data get by the board or from the remote server.
 \end{itemize}
     
 \subsection{Map Screen}
 \begin{itemize}
     \item Allows the user to see the data on a Map. For each data a circle in its location is created, the radius of the circle depends on the value of the measure considered;
-    \item Allows the user to go to the related\textit{Filter Screen} to change the data visualized.
+    \item Allows the user to go to the related \textit{Filter Screen} to change the data visualized.
 \end{itemize}
     
 \subsection{Chart Screen}
@@ -88,7 +89,7 @@ In this section, I want to exploit all the functional requirements of my applica
 \begin{itemize}
     \item \textit{Login screen} should be accessible only to users not currently logged in;
     \item Authentication screens should allow users to register or login using email and password;
-    \item Authentication screens should redirect the user to the \textit{Arduino screen} if the authentication is successful.
+    \item Authentication screens should redirect the user to the \textit{Arduino Screen} if the authentication is successful.
 \end{itemize}
     
 \subsection{Arduino Requirements}

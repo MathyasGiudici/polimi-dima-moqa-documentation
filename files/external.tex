@@ -71,7 +71,7 @@ All the backend is developed using Javascript code and the default \textit{npm} 
 
 The starting point with function declarations and interfaces was generated through the \textit{Swagger} file using the \textit{Swagger Editor} [ \url{https://editor.swagger.io/} ] service.\\
 
-Relevant package added are:
+Relevant package added, in the server, are:
 \begin{itemize}
     \item \textit{node-postgres} (aka pg) is a collection of Node.js modules for interfacing with your PostgreSQL database;
     \item \textit{knex.js} is a SQL query builder for Postgres designed to be flexible, portable, and easy to use;
@@ -79,11 +79,10 @@ Relevant package added are:
     \item \textit{JSON Web Tokens} (aka jwt) is standard method for representing claims securely between two parties. The package allows you to decode, verify and generate JWT .
 \end{itemize}
 
-\clearpage
 \section{ARPA Data}
 ARPA data are not available from the official web-site of the institute, but they are provided by the OpenData service offered by \textit{Regione Lombardia} [ \url{https://www.dati.lombardia.it/} ].\\
 
-\textit{Regione Lombardia} offers a web tool to visualize, aggragate and export data; unlimited downloads of datasets in different formats (e.g. csv, json, ecc...).
+\textit{Regione Lombardia} offers a web tool to visualize, aggragate and export data; unlimited downloads of datasets in different formats (e.g. csv, json, ecc...) are available.
 Moreover, it offers a web API to access a specific dataset.\\
 
 Data about the monitoring stations are returned as a \textit{GeoJSON} file. The file contains an array of sensors, each one associated to a station, its position, its typology, unit of measure and altitude.\\
